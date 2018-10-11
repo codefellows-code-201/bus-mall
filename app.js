@@ -37,21 +37,21 @@ BusMallImage.prototype.renderImage = function(){
 //Event Listeners and Handlers
 var imageClickHandler = function(event){
 //Make sure this only happens when an image is clicked
-  if(event.target.id === 'left' || event.target.id === 'middle' || event.target.id === 'right')
+  if(event.target.id === 'left' || event.target.id === 'middle' || event.target.id === 'right'){
 
-  //Choose the image shown based on a random number
+    //Choose the image shown based on a random number
     do {
       var randomNumberLeft = Math.floor(Math.random() * allBusMallImagesArray.length);
     } while(randomNumberLeft === currentLeftImageArrayIndex || randomNumberLeft === currentMiddleImageArrayIndex || randomNumberLeft === currentRightImageArrayIndex);
 
-  do {
-    var randomNumberMiddle = Math.floor(Math.random() * allBusMallImagesArray.length);
-  } while(randomNumberMiddle === currentLeftImageArrayIndex || randomNumberMiddle === currentMiddleImageArrayIndex || randomNumberMiddle === currentRightImageArrayIndex);
+    do {
+      var randomNumberMiddle = Math.floor(Math.random() * allBusMallImagesArray.length);
+    } while(randomNumberMiddle === currentLeftImageArrayIndex || randomNumberMiddle === currentMiddleImageArrayIndex || randomNumberMiddle === currentRightImageArrayIndex);
 
-  do {
-    var randomNumberRight = Math.floor(Math.random() * allBusMallImagesArray.length);
-  } while(randomNumberRight === currentLeftImageArrayIndex || randomNumberRight === currentMiddleImageArrayIndex || randomNumberRight === currentRightImageArrayIndex);
-
+    do {
+      var randomNumberRight = Math.floor(Math.random() * allBusMallImagesArray.length);
+    } while(randomNumberRight === currentLeftImageArrayIndex || randomNumberRight === currentMiddleImageArrayIndex || randomNumberRight === currentRightImageArrayIndex);
+  }
   //Increment the images that were clicked
   if(event.target.id === 'left'){
     allBusMallImagesArray[currentLeftImageArrayIndex].likes++;
