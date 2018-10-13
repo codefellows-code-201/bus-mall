@@ -3,7 +3,7 @@
 var busMallImageLeft = document.getElementById('left');
 var busMallImageMiddle = document.getElementById('middle');
 var busMallImageRight = document.getElementById('right');
-// var imageContainer = document.getElementById('click-images');
+var imageContainer = document.getElementById('click-images');
 var leftImageText = document.getElementById('left-image-text');
 var middleImageText = document.getElementById('middle-image-text');
 var rightImageText = document.getElementById('right-image-text');
@@ -12,6 +12,10 @@ var currentMiddleImageArrayIndex = 9;
 var currentRightImageArrayIndex = 7;
 var allBusMallImagesArray = [];
 var clickCount = 0; //counting clicks
+var likes = [];
+var names = [];
+var appearances = [];
+var ctx = document.getElementById('busmall-chart').getContext('2d');
 
 //Constructor: Bus Mall Images
 var BusMallImage = function(src,name){
@@ -85,11 +89,19 @@ var imageClickHandler = function(event){
   // console.log('here', allBusMallImagesArray);
   // console.log(event.target);
 
-  if(clickCount === 25){
-    BusMallImage.renderList();
+  if(clickCount === 5){
+    for(var i=0 ; i < allBusMallImagesArray.length ; i++){
+      names.push(allBusMallImagesArray[i].name);
+      likes.push(allBusMallImagesArray[i].likes);
+      appearances.push(allBusMallImagesArray[i].appeared);
+    }
+    // BusMallImage.renderList();
     busMallImageLeft.removeEventListener('click', imageClickHandler);
     busMallImageMiddle.removeEventListener('click', imageClickHandler);
-    busMallImageRight.removeEventListener('click', imageClickHandler); 
+    busMallImageRight.removeEventListener('click', imageClickHandler);
+    // imageContainer.style.display = 'hidden';
+    imageContainer.parentNode.removeChild(imageContainer);
+    renderChart();
   }
 };
 
@@ -111,7 +123,46 @@ BusMallImage.renderList = function(){
 };
 
 // BusMallImage.renderList();//just for testing purposes
+//=====================================================================
+//-----------------------------CHART-----------------------------------
+//=====================================================================
+var chartData = {
+  labels: names,
+  datasets: [{
+    label: '# of Likes',
+    data: likes,
+    backgroundColor: '#222',
+    borderColor: '#222',
+    borderWidth: 1
+  },
+  {
+    label: '# of Appearances',
+    data: appearances,
+    backgroundColor: '#999',
+    borderColor: '#999',
+    borderWidth: 1
+  }]
+};
 
+var chartOptions = {
+  scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero:true
+      }
+    }]
+  }
+};
+var barChart = {
+  type: 'pie',
+  data: chartData,
+  options: chartOptions,
+};
+
+//Render the Chart
+var renderChart = function(){
+  var myChart = new Chart(ctx, barChart);  
+};
 //Images
 new BusMallImage('./img/bag.jpg', 'Bag');
 new BusMallImage('./img/banana.jpg', 'Banana');
