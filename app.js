@@ -3,14 +3,15 @@
 var busMallImageLeft = document.getElementById('left');
 var busMallImageMiddle = document.getElementById('middle');
 var busMallImageRight = document.getElementById('right');
-var imageContainer = document.getElementById('click-images');
+// var imageContainer = document.getElementById('click-images');
 var leftImageText = document.getElementById('left-image-text');
 var middleImageText = document.getElementById('middle-image-text');
 var rightImageText = document.getElementById('right-image-text');
-var currentLeftImageArrayIndex = 0;
-var currentMiddleImageArrayIndex = 8;
-var currentRightImageArrayIndex = 12;
+var currentLeftImageArrayIndex = 16;
+var currentMiddleImageArrayIndex = 9;
+var currentRightImageArrayIndex = 7;
 var allBusMallImagesArray = [];
+var clickCount = 0; //counting clicks
 
 //Constructor: Bus Mall Images
 var BusMallImage = function(src,name){
@@ -22,46 +23,43 @@ var BusMallImage = function(src,name){
 };
 
 //Prototype
-BusMallImage.prototype.renderImage = function(){
-  busMallImageLeft.src = this.src;
-  //============================================
-  //Do I need these??
-  //============================================
-  busMallImageMiddle.src = this.src;
-  busMallImageRight.src = this.src;
-  //============================================
-};
+// BusMallImage.prototype.renderImage = function(){
+//   busMallImageLeft.src = this.src;
+//   busMallImageMiddle.src = this.src;
+//   busMallImageRight.src = this.src;
+// };
 
 //Event Listeners and Handlers
 var imageClickHandler = function(event){
-//Make sure this only happens when an image is clicked
+  clickCount++;
+  //Make sure this only happens when an image is clicked
   if(event.target.id === 'left' || event.target.id === 'middle' || event.target.id === 'right'){
 
     //Choose the image shown based on a random number
     do {
       var randomNumberLeft = Math.floor(Math.random() * allBusMallImagesArray.length);
-    } while(randomNumberLeft === currentLeftImageArrayIndex || randomNumberLeft === currentMiddleImageArrayIndex || randomNumberLeft === currentRightImageArrayIndex);
+    } while(randomNumberLeft === currentLeftImageArrayIndex || randomNumberLeft === currentMiddleImageArrayIndex || randomNumberLeft === currentRightImageArrayIndex || randomNumberLeft === randomNumberMiddle || randomNumberLeft === randomNumberRight);
 
     do {
       var randomNumberMiddle = Math.floor(Math.random() * allBusMallImagesArray.length);
-    } while(randomNumberMiddle === currentLeftImageArrayIndex || randomNumberMiddle === currentMiddleImageArrayIndex || randomNumberMiddle === currentRightImageArrayIndex);
+    } while(randomNumberMiddle === currentLeftImageArrayIndex || randomNumberMiddle === currentMiddleImageArrayIndex || randomNumberMiddle === currentRightImageArrayIndex || randomNumberMiddle === randomNumberLeft || randomNumberMiddle === randomNumberRight);
 
     do {
       var randomNumberRight = Math.floor(Math.random() * allBusMallImagesArray.length);
-    } while(randomNumberRight === currentLeftImageArrayIndex || randomNumberRight === currentMiddleImageArrayIndex || randomNumberRight === currentRightImageArrayIndex);
+    } while(randomNumberRight === currentLeftImageArrayIndex || randomNumberRight === currentMiddleImageArrayIndex || randomNumberRight === currentRightImageArrayIndex || randomNumberRight === randomNumberLeft || randomNumberRight === randomNumberMiddle);
   }
   //Increment the images that were clicked
   if(event.target.id === 'left'){
     allBusMallImagesArray[currentLeftImageArrayIndex].likes++;
-    console.log('clicked the left image');
+    // console.log('clicked the left image');
   }
   else if (event.target.id === 'middle') {
     allBusMallImagesArray[currentMiddleImageArrayIndex].likes++;
-    console.log('clicked the middle image');
+    // console.log('clicked the middle image');
   }
   else if (event.target.id === 'right') {
     allBusMallImagesArray[currentRightImageArrayIndex].likes++;
-    console.log('clicked the right image');
+    // console.log('clicked the right image');
   }
 
   //How many times did each image appear on the screen?
@@ -83,14 +81,36 @@ var imageClickHandler = function(event){
   leftImageText.textContent = allBusMallImagesArray[randomNumberLeft].name;
   middleImageText.textContent = allBusMallImagesArray[randomNumberMiddle].name;
   rightImageText.textContent = allBusMallImagesArray[randomNumberRight].name;
-  
-  console.log(allBusMallImagesArray);
-  console.log(event.target);
+
+  // console.log('here', allBusMallImagesArray);
+  // console.log(event.target);
+
+  if(clickCount === 25){
+    BusMallImage.renderList();
+    busMallImageLeft.removeEventListener('click', imageClickHandler);
+    busMallImageMiddle.removeEventListener('click', imageClickHandler);
+    busMallImageRight.removeEventListener('click', imageClickHandler); 
+  }
 };
 
 busMallImageLeft.addEventListener('click', imageClickHandler);
 busMallImageMiddle.addEventListener('click', imageClickHandler);
 busMallImageRight.addEventListener('click', imageClickHandler);
+
+BusMallImage.renderList = function(){
+  var listContainer = document.getElementById('results');
+  var listName = document.createElement('h2');
+  listName.textContent = 'Results';
+  listContainer.appendChild(listName);
+
+  for(var i=0; i< allBusMallImagesArray.length ; i++) {
+    var listResults = document.createElement('li');
+    listResults.textContent = allBusMallImagesArray[i].name + ': ' + allBusMallImagesArray[i].likes + ' Likes after Appearing ' + allBusMallImagesArray[i].appeared + ' times';
+    listName.appendChild(listResults);
+  }
+};
+
+// BusMallImage.renderList();//just for testing purposes
 
 //Images
 new BusMallImage('./img/bag.jpg', 'Bag');
