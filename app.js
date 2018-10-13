@@ -12,8 +12,6 @@ var currentMiddleImageArrayIndex = 8;
 var currentRightImageArrayIndex = 12;
 var allBusMallImagesArray = [];
 
-console.log('hello');
-
 //Constructor: Bus Mall Images
 var BusMallImage = function(src,name){
   this.src = src;
@@ -61,10 +59,11 @@ var imageClickHandler = function(event){
     allBusMallImagesArray[currentMiddleImageArrayIndex].likes++;
     console.log('clicked the middle image');
   }
-  else {
+  else if (event.target.id === 'right') {
     allBusMallImagesArray[currentRightImageArrayIndex].likes++;
     console.log('clicked the right image');
   }
+
   //How many times did each image appear on the screen?
   allBusMallImagesArray[currentLeftImageArrayIndex].appeared++;
   allBusMallImagesArray[currentMiddleImageArrayIndex].appeared++;
@@ -80,15 +79,18 @@ var imageClickHandler = function(event){
   //Referencing a new image and text index based on the random numbers generated.
   busMallImageLeft.src = allBusMallImagesArray[randomNumberLeft].src;
   busMallImageMiddle.src = allBusMallImagesArray[randomNumberMiddle].src;
-  busMallImageRight.src = allBusMallImagesArray[randomNumberRight];
+  busMallImageRight.src = allBusMallImagesArray[randomNumberRight].src;
   leftImageText.textContent = allBusMallImagesArray[randomNumberLeft].name;
   middleImageText.textContent = allBusMallImagesArray[randomNumberMiddle].name;
   rightImageText.textContent = allBusMallImagesArray[randomNumberRight].name;
-
+  
+  console.log(allBusMallImagesArray);
   console.log(event.target);
 };
 
-imageContainer.addEventListener('click', imageClickHandler);
+busMallImageLeft.addEventListener('click', imageClickHandler);
+busMallImageMiddle.addEventListener('click', imageClickHandler);
+busMallImageRight.addEventListener('click', imageClickHandler);
 
 //Images
 new BusMallImage('./img/bag.jpg', 'Bag');
@@ -102,7 +104,7 @@ new BusMallImage('./img/cthulhu.jpg', 'Cthulhu');
 new BusMallImage('./img/dog-duck.jpg', 'Dog-Duck');
 new BusMallImage('./img/dragon.jpg', 'Dragon');
 new BusMallImage('./img/pen.jpg', 'Pen');
-new BusMallImage('./img/pet-sweep', 'Pet-Slippers');
+new BusMallImage('./img/pet-sweep.jpg', 'Pet-Slippers');
 new BusMallImage('./img/scissors.jpg', 'Scissors');
 new BusMallImage('./img/shark.jpg', 'Shark');
 new BusMallImage('./img/sweep.png', 'Baby-Sweep');
