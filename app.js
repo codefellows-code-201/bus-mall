@@ -9,7 +9,7 @@ var middleImageText = document.getElementById('middle-image-text');
 var rightImageText = document.getElementById('right-image-text');
 var currentLeftImageArrayIndex = 0;
 var currentMiddleImageArrayIndex = 8;
-var currentRightImageArrayIndex = 17;
+var currentRightImageArrayIndex = 12;
 var allBusMallImagesArray = [];
 
 console.log('hello');
@@ -57,11 +57,13 @@ var imageClickHandler = function(event){
     allBusMallImagesArray[currentLeftImageArrayIndex].likes++;
     console.log('clicked the left image');
   }
-  else if (event.targot.id === 'middle') {
+  else if (event.target.id === 'middle') {
     allBusMallImagesArray[currentMiddleImageArrayIndex].likes++;
+    console.log('clicked the middle image');
   }
   else {
     allBusMallImagesArray[currentRightImageArrayIndex].likes++;
+    console.log('clicked the right image');
   }
   //How many times did each image appear on the screen?
   allBusMallImagesArray[currentLeftImageArrayIndex].appeared++;
@@ -103,7 +105,7 @@ new BusMallImage('./img/pen.jpg', 'Pen');
 new BusMallImage('./img/pet-sweep', 'Pet-Slippers');
 new BusMallImage('./img/scissors.jpg', 'Scissors');
 new BusMallImage('./img/shark.jpg', 'Shark');
-new BusMallImage('./img/sweep.jpg', 'Baby-Sweep');
+new BusMallImage('./img/sweep.png', 'Baby-Sweep');
 new BusMallImage('./img/tauntaun.jpg', 'Tauntaun');
 new BusMallImage('./img/unicorn.jpg', 'Unicorn');
 new BusMallImage('./img/usb.gif', 'Tentacle-USB');
