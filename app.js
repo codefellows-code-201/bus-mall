@@ -89,7 +89,7 @@ var imageClickHandler = function(event){
   // console.log('here', allBusMallImagesArray);
   // console.log(event.target);
 
-  if(clickCount === 5){
+  if(clickCount === 25){
     for(var i=0 ; i < allBusMallImagesArray.length ; i++){
       names.push(allBusMallImagesArray[i].name);
       likes.push(allBusMallImagesArray[i].likes);
