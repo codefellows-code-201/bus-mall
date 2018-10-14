@@ -1,3 +1,16 @@
+/* font-family: 'Fredericka the Great', cursive;
+font-family: 'Amatic SC', cursive;
+font-family: 'Open Sans Condensed', sans-serif; */
+* {
+  color: white;
+  border: 2px solid green;
+}
+body {
+  background-image:url("img/chalkboard-black.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 #click-images img {
   width: 300px;
   height: 300px;

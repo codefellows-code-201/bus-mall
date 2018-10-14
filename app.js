@@ -89,7 +89,7 @@ var imageClickHandler = function(event){
   // console.log('here', allBusMallImagesArray);
   // console.log(event.target);
 
-  if(clickCount === 5){
+  if(clickCount === 25){
     for(var i=0 ; i < allBusMallImagesArray.length ; i++){
       names.push(allBusMallImagesArray[i].name);
       likes.push(allBusMallImagesArray[i].likes);
@@ -131,20 +131,24 @@ var chartData = {
   datasets: [{
     label: '# of Likes',
     data: likes,
-    backgroundColor: '#222',
-    borderColor: '#222',
+    backgroundColor: 'rgba(111, 231, 219, 0.5)',
+    borderColor: '#6fe7db',
     borderWidth: 1
   },
   {
     label: '# of Appearances',
     data: appearances,
-    backgroundColor: '#999',
-    borderColor: '#999',
+    backgroundColor: 'rgba(244, 244, 240, 0.5)',
+    borderColor: '#f4f4f0',
     borderWidth: 1
   }]
 };
 
 var chartOptions = {
+  legend:{
+    position: 'bottom',
+    fontFamily: 'Fredericka the Great'
+  },
   scales: {
     yAxes: [{
       ticks: {
@@ -154,14 +158,14 @@ var chartOptions = {
   }
 };
 var barChart = {
-  type: 'pie',
+  type: 'bar',
   data: chartData,
   options: chartOptions,
 };
 
 //Render the Chart
 var renderChart = function(){
-  var myChart = new Chart(ctx, barChart);  
+  var myChart = new Chart(ctx, barChart);
 };
 //Images
 new BusMallImage('./img/bag.jpg', 'Bag');
