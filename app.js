@@ -147,12 +147,24 @@ var chartData = {
 var chartOptions = {
   legend:{
     position: 'bottom',
-    fontFamily: 'Fredericka the Great'
+    defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Fredericka the Great', cursive",
+    labels: {
+      fontSize: 16,
+      fontColor: '#f4f4f0',
+    },
   },
   scales: {
+    xAxes:[{
+      ticks: {
+        fontSize: 16,
+        autoSkip: false,
+        fontColor: '#f4f4f0',
+      }
+    }],
     yAxes: [{
       ticks: {
-        beginAtZero:true
+        fontSize: 16,
+        fontColor: '#f4f4f0',
       }
     }]
   }
