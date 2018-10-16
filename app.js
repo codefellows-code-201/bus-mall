@@ -105,6 +105,17 @@ var imageClickHandler = function(event){
     renderChart();
     paragraphContainer.parentNode.removeChild(paragraphContainer);
 
+    var saveLikes = function(likes){
+      localStorage.setItem = JSON.stringify(likes);
+    };
+    saveLikes(likes);
+    console.log(saveLikes);
+  
+    var saveAppearances = function(appearances){
+      localStorage.setItem = JSON.stringify(appearances);
+    };
+    saveAppearances(appearances);
+    console.log(saveAppearances);
   }
 };
 
