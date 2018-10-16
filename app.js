@@ -161,7 +161,7 @@ var chartOptions = {
     display: true,
     defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Amatic SC', cursive",
     fontColor: '#f4f4f0',
-    fontSize: 50,
+    fontSize: 40,
     position: 'top',
     padding: 20,
     text: '~~ Survey Results ~~',
