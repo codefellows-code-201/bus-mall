@@ -5,50 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bus Mall</title>
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Fredericka+the+Great|Open+Sans+Condensed:300" rel="stylesheet">
   <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
   <link rel="stylesheet" type="text/css" media="screen" href="reset.css"/>
   <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Fredericka+the+Great|Open+Sans+Condensed:300" rel="stylesheet">
 </head>
 <body>
   <header>
     <div id="logo">
-    <h1>Page Title</h1>
+    <h1>~~ Bus Mall Product Survey ~~</h1>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
+    <div id="nav-bar">
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
 </header>
 <main>
   <ul id="results">
   </ul>
   <section id="click-images">
-    <h1>Pretty Picture Title Needed</h1>
+    <!-- <h1>Pretty Picture Title Needed</h1> -->
     <div>
-      <img id="left" src= "img/unicorn.jpg">
-      <h2 id="left-image-text">Unicorn</h2> 
-    </div>
-    <div>
+      <img id="left" src= "img/unicorn.jpg"> 
       <img id="middle" src= "img/dragon.jpg">
-      <h2 id="middle-image-text">Dragon</h2>
+      <img id="right" src= "img/cthulhu.jpg">
     </div>
     <div>
-      <img id="right" src= "img/cthulhu.jpg">
+      <h2 id="left-image-text">Unicorn</h2>
+      <h2 id="middle-image-text">Dragon</h2>
       <h2 id="right-image-text">Cthulhu</h2>
     </div>
   </section>
-  <button>Vote!</button>
+  <!-- <button>Vote!</button> -->
   <!-- Hipster Ipsum https://hipsum.co/?paras=2&type=hipster-centric&start-with-lorem=1 -->
-  
-  <p>Lorem ipsum dolor amet shabby chic sustainable mixtape woke vexillologist, hella wolf selfies. Twee jianbing flexitarian marfa squid gluten-free shabby chic. Poutine direct trade portland cloud bread stumptown leggings. Post-ironic everyday carry yuccie meditation. Roof party ennui 3 wolf moon chambray lomo fingerstache. Banjo cray live-edge, freegan plaid keytar heirloom. Gastropub leggings shabby chic church-key, listicle coloring book XOXO gentrify subway tile helvetica cliche af sartorial slow-carb migas. Meggings authentic ugh listicle dreamcatcher chillwave, forage blue bottle. Wayfarers brunch small batch trust fund. Meh vexillologist pickled chambray. Photo booth yr hoodie tilde four dollar toast.
+  <section id="hipster-ipsum">
+    <h3 id="about-survey">~~ About the Survey ~~</h2>
+    <p>Lorem ipsum dolor amet shabby chic sustainable mixtape woke vexillologist, hella wolf selfies. Twee jianbing flexitarian marfa squid gluten-free shabby chic. Poutine direct trade portland cloud bread stumptown leggings. Post-ironic everyday carry yuccie meditation. Roof party ennui 3 wolf moon chambray lomo fingerstache. Banjo cray live-edge, freegan plaid keytar heirloom. Gastropub leggings shabby chic church-key, listicle coloring book XOXO gentrify subway tile helvetica cliche af sartorial slow-carb migas. Meggings authentic ugh listicle dreamcatcher chillwave, forage blue bottle. Wayfarers brunch small batch trust fund. Meh vexillologist pickled chambray. Photo booth yr hoodie tilde four dollar toast.
   </p>
+  </section>
 </main>
-<canvas id="busmall-chart"></canvas>
+<section id="chart">
+  <canvas id="busmall-chart"></canvas>
+</section>
 <footer>
 
 </footer>
