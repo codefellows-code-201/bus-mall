@@ -3,6 +3,7 @@
 var busMallImageLeft = document.getElementById('left');
 var busMallImageMiddle = document.getElementById('middle');
 var busMallImageRight = document.getElementById('right');
+var paragraphContainer = document.getElementById('hipster-ipsum');
 var imageContainer = document.getElementById('click-images');
 var leftImageText = document.getElementById('left-image-text');
 var middleImageText = document.getElementById('middle-image-text');
@@ -102,6 +103,8 @@ var imageClickHandler = function(event){
     // imageContainer.style.display = 'hidden';
     imageContainer.parentNode.removeChild(imageContainer);
     renderChart();
+    paragraphContainer.parentNode.removeChild(paragraphContainer);
+
   }
 };
 
@@ -145,16 +148,29 @@ var chartData = {
 };
 
 var chartOptions = {
+  responsive: true,
   legend:{
     position: 'bottom',
-    defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Fredericka the Great', cursive",
+    defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Amatic SC', cursive",
     labels: {
-      fontSize: 16,
+      fontSize: 25,
       fontColor: '#f4f4f0',
     },
   },
+  title:{
+    display: true,
+    defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Amatic SC', cursive",
+    fontColor: '#f4f4f0',
+    fontSize: 50,
+    position: 'top',
+    padding: 20,
+    text: '~~ Survey Results ~~',
+  },
   scales: {
     xAxes:[{
+      gridLines:{
+        zeroLineColor: '#f4f4f0',
+      },
       ticks: {
         fontSize: 16,
         autoSkip: false,
@@ -180,23 +196,23 @@ var renderChart = function(){
   var myChart = new Chart(ctx, barChart);
 };
 //Images
-new BusMallImage('./img/bag.jpg', 'Bag');
-new BusMallImage('./img/banana.jpg', 'Banana');
-new BusMallImage('./img/bathroom.jpg','Bathroom');
-new BusMallImage('./img/boots.jpg', 'Boots');
-new BusMallImage('./img/breakfast.jpg', 'Breakfast');
-new BusMallImage('./img/bubblegum.jpg', 'Bubblegum');
-new BusMallImage('./img/chair.jpg', 'Chair');
-new BusMallImage('./img/cthulhu.jpg', 'Cthulhu');
-new BusMallImage('./img/dog-duck.jpg', 'Dog-Duck');
-new BusMallImage('./img/dragon.jpg', 'Dragon');
-new BusMallImage('./img/pen.jpg', 'Pen');
-new BusMallImage('./img/pet-sweep.jpg', 'Pet-Slippers');
-new BusMallImage('./img/scissors.jpg', 'Scissors');
-new BusMallImage('./img/shark.jpg', 'Shark');
-new BusMallImage('./img/sweep.png', 'Baby-Sweep');
-new BusMallImage('./img/tauntaun.jpg', 'Tauntaun');
-new BusMallImage('./img/unicorn.jpg', 'Unicorn');
-new BusMallImage('./img/usb.gif', 'Tentacle-USB');
-new BusMallImage('./img/water-can.jpg', 'Watering-Can');
-new BusMallImage('./img/wine-glass.jpg', 'Wine-Glass');
+new BusMallImage('./img/bag.jpg', 'R2D2 on Vacation');
+new BusMallImage('./img/banana.jpg', 'Banana Slicer');
+new BusMallImage('./img/bathroom.jpg','Bathroom Screentime');
+new BusMallImage('./img/boots.jpg', 'Pedicure Boots');
+new BusMallImage('./img/breakfast.jpg', 'One Stop Breakfast');
+new BusMallImage('./img/bubblegum.jpg', 'Italian Bubblegum');
+new BusMallImage('./img/chair.jpg', 'Punishment Chair');
+new BusMallImage('./img/cthulhu.jpg', 'Cthulhu Monster');
+new BusMallImage('./img/dog-duck.jpg', 'Dog Shaming');
+new BusMallImage('./img/dragon.jpg', 'Dragon for Dinner');
+new BusMallImage('./img/pen.jpg', 'Pen Utensils');
+new BusMallImage('./img/pet-sweep.jpg', 'Canine Labor');
+new BusMallImage('./img/scissors.jpg', 'Pizza Scissors');
+new BusMallImage('./img/shark.jpg', 'Sleeping with Sharks');
+new BusMallImage('./img/sweep.png', 'Questionable Parenting');
+new BusMallImage('./img/tauntaun.jpg', 'Sleeping with Intestines');
+new BusMallImage('./img/unicorn.jpg', 'Sparkles for Dinner');
+new BusMallImage('./img/usb.gif', 'Creepy Tentacle');
+new BusMallImage('./img/water-can.jpg', 'Useless Watering-Can');
+new BusMallImage('./img/wine-glass.jpg', 'Impossible Wine-Glass');
