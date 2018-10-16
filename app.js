@@ -5,6 +5,7 @@ var busMallImageMiddle = document.getElementById('middle');
 var busMallImageRight = document.getElementById('right');
 var paragraphContainer = document.getElementById('hipster-ipsum');
 var imageContainer = document.getElementById('click-images');
+var navBarContainer = document.getElementById('nav-bar');
 var leftImageText = document.getElementById('left-image-text');
 var middleImageText = document.getElementById('middle-image-text');
 var rightImageText = document.getElementById('right-image-text');
@@ -95,6 +96,17 @@ var imageClickHandler = function(event){
       names.push(allBusMallImagesArray[i].name);
       likes.push(allBusMallImagesArray[i].likes);
       appearances.push(allBusMallImagesArray[i].appeared);
+      var saveLikes = function(likes){
+        localStorage.setItem = JSON.stringify(likes);
+      };
+      saveLikes(likes);
+      console.log(saveLikes);
+
+      var saveAppearances = function(appearances){
+        localStorage.setItem = JSON.stringify(appearances);
+      };
+      saveAppearances(appearances);
+      console.log(saveAppearances);
     }
     // BusMallImage.renderList();
     busMallImageLeft.removeEventListener('click', imageClickHandler);
@@ -104,18 +116,7 @@ var imageClickHandler = function(event){
     imageContainer.parentNode.removeChild(imageContainer);
     renderChart();
     paragraphContainer.parentNode.removeChild(paragraphContainer);
-
-    var saveLikes = function(likes){
-      localStorage.setItem = JSON.stringify(likes);
-    };
-    saveLikes(likes);
-    console.log(saveLikes);
-  
-    var saveAppearances = function(appearances){
-      localStorage.setItem = JSON.stringify(appearances);
-    };
-    saveAppearances(appearances);
-    console.log(saveAppearances);
+    navBarContainer.parentNode.removeChild(navBarContainer);
   }
 };
 
