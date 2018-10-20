@@ -3,6 +3,8 @@
 var busMallImageLeft = document.getElementById('left');
 var busMallImageMiddle = document.getElementById('middle');
 var busMallImageRight = document.getElementById('right');
+var refreshButton1 = document.getElementById('hide1');
+var refreshButton2 = document.getElementById('hide2');
 var paragraphContainer = document.getElementById('hipster-ipsum');
 var imageContainer = document.getElementById('click-images');
 var navBarContainer = document.getElementById('nav-bar');
@@ -27,6 +29,51 @@ var BusMallImage = function(src,name){
   this.name = name;
   allBusMallImagesArray.push(this);
 };
+
+var allImages= function() {
+  new BusMallImage('./img/bag.jpg', 'R2D2 on Vacation');
+  new BusMallImage('./img/banana.jpg', 'Banana Slicer');
+  new BusMallImage('./img/bathroom.jpg','Bathroom Screentime');
+  new BusMallImage('./img/boots.jpg', 'Pedicure Boots');
+  new BusMallImage('./img/breakfast.jpg', 'One Stop Breakfast');
+  new BusMallImage('./img/bubblegum.jpg', 'Italian Bubblegum');
+  new BusMallImage('./img/chair.jpg', 'Punishment Chair');
+  new BusMallImage('./img/cthulhu.jpg', 'Cthulhu Monster');
+  new BusMallImage('./img/dog-duck.jpg', 'Dog Shaming');
+  new BusMallImage('./img/dragon.jpg', 'Dragon for Dinner');
+  new BusMallImage('./img/pen.jpg', 'Pen Utensils');
+  new BusMallImage('./img/pet-sweep.jpg', 'Canine Labor');
+  new BusMallImage('./img/scissors.jpg', 'Pizza Scissors');
+  new BusMallImage('./img/shark.jpg', 'Sleeping with Sharks');
+  new BusMallImage('./img/sweep.png', 'Questionable Parenting');
+  new BusMallImage('./img/tauntaun.jpg', 'Sleeping with Intestines');
+  new BusMallImage('./img/unicorn.jpg', 'Sparkles for Dinner');
+  new BusMallImage('./img/usb.gif', 'Creepy Tentacle');
+  new BusMallImage('./img/water-can.jpg', 'Useless Watering-Can');
+  new BusMallImage('./img/wine-glass.jpg', 'Impossible Wine-Glass');
+};
+
+if(localStorage.clicks){
+  clickCount = localStorage.getItem('clicks');
+  if (clickCount >= 25){
+    clickCount = 0;
+  }
+}
+if(localStorage['array-data']){
+  var locallyStored = localStorage.getItem('array-data');
+  allBusMallImagesArray = JSON.parse(locallyStored);
+}else{
+  allImages();
+}
+
+var buttonClickHandler = function(event2){
+  if(event2.target.id === 'clear-data'){
+    localStorage.clear();
+  }
+};
+
+refreshButton1.addEventListener('click', buttonClickHandler);
+refreshButton2.addEventListener('click', buttonClickHandler);
 
 //Prototype
 // BusMallImage.prototype.renderImage = function(){
@@ -88,25 +135,18 @@ var imageClickHandler = function(event){
   middleImageText.textContent = allBusMallImagesArray[randomNumberMiddle].name;
   rightImageText.textContent = allBusMallImagesArray[randomNumberRight].name;
 
-  // console.log('here', allBusMallImagesArray);
-  // console.log(event.target);
+  var saveData = JSON.stringify(allBusMallImagesArray);
+  localStorage.setItem('array-data', saveData);
+  console.log(saveData);
+
+  var saveClicks = JSON.stringify(clickCount);
+  localStorage.setItem('clicks', saveClicks);
 
   if(clickCount === 25){
     for(var i=0 ; i < allBusMallImagesArray.length ; i++){
       names.push(allBusMallImagesArray[i].name);
       likes.push(allBusMallImagesArray[i].likes);
       appearances.push(allBusMallImagesArray[i].appeared);
-      var saveLikes = function(likes){
-        localStorage.setItem = JSON.stringify(likes);
-      };
-      saveLikes(likes);
-      console.log(saveLikes);
-
-      var saveAppearances = function(appearances){
-        localStorage.setItem = JSON.stringify(appearances);
-      };
-      saveAppearances(appearances);
-      console.log(saveAppearances);
     }
     // BusMallImage.renderList();
     busMallImageLeft.removeEventListener('click', imageClickHandler);
@@ -115,6 +155,10 @@ var imageClickHandler = function(event){
     // imageContainer.style.display = 'hidden';
     imageContainer.parentNode.removeChild(imageContainer);
     renderChart();
+
+    refreshButton1.setAttribute('id','vote');
+    refreshButton2.setAttribute('id','clear-data');
+
     paragraphContainer.parentNode.removeChild(paragraphContainer);
     navBarContainer.parentNode.removeChild(navBarContainer);
   }
@@ -207,24 +251,4 @@ var barChart = {
 var renderChart = function(){
   var myChart = new Chart(ctx, barChart);
 };
-//Images
-new BusMallImage('./img/bag.jpg', 'R2D2 on Vacation');
-new BusMallImage('./img/banana.jpg', 'Banana Slicer');
-new BusMallImage('./img/bathroom.jpg','Bathroom Screentime');
-new BusMallImage('./img/boots.jpg', 'Pedicure Boots');
-new BusMallImage('./img/breakfast.jpg', 'One Stop Breakfast');
-new BusMallImage('./img/bubblegum.jpg', 'Italian Bubblegum');
-new BusMallImage('./img/chair.jpg', 'Punishment Chair');
-new BusMallImage('./img/cthulhu.jpg', 'Cthulhu Monster');
-new BusMallImage('./img/dog-duck.jpg', 'Dog Shaming');
-new BusMallImage('./img/dragon.jpg', 'Dragon for Dinner');
-new BusMallImage('./img/pen.jpg', 'Pen Utensils');
-new BusMallImage('./img/pet-sweep.jpg', 'Canine Labor');
-new BusMallImage('./img/scissors.jpg', 'Pizza Scissors');
-new BusMallImage('./img/shark.jpg', 'Sleeping with Sharks');
-new BusMallImage('./img/sweep.png', 'Questionable Parenting');
-new BusMallImage('./img/tauntaun.jpg', 'Sleeping with Intestines');
-new BusMallImage('./img/unicorn.jpg', 'Sparkles for Dinner');
-new BusMallImage('./img/usb.gif', 'Creepy Tentacle');
-new BusMallImage('./img/water-can.jpg', 'Useless Watering-Can');
-new BusMallImage('./img/wine-glass.jpg', 'Impossible Wine-Glass');
+
