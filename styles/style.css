@@ -3,15 +3,19 @@ font-family: 'Amatic SC', cursive;
 font-family: 'Open Sans Condensed', sans-serif; */
 * {
   color: white;
+  -webkit-user-select: none
   
 }
 
 body {
-  background-image:url("img/chalkboard-black.jpg");
+  background-image:url("../img/chalkboard-black.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+  /* background-size: 100% 100%; */
   width: 960px;
+  height: 980px;
   margin: auto;
+  background-image: center;
 }
 
 body header h1 {
@@ -87,9 +91,8 @@ p {
 }
 
 canvas {
-  margin-top: 40px;
+  margin-top: 60px;
   padding: 10px;
-  /* border: 3px solid #f4f4f0; */
 }
 
 footer {
@@ -107,11 +110,12 @@ footer {
   font-size: 40px;
   text-align: center;
   border: 2px dashed white;
-  background-image:url("img/chalkboard-black.jpg");
+  background-image:url("../img/chalkboard-black.jpg");
   padding: 5px;
   margin-left: 160px;
   float:left;
   margin-top: 30px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 #clear-data {
@@ -119,9 +123,10 @@ footer {
   font-size: 40px;
   text-align: center;
   border: 2px dashed white;
-  background-image:url("img/chalkboard-black.jpg");
+  background-image:url("../img/chalkboard-black.jpg");
   padding: 5px;
   margin-left: 160px;
   float:left;
   margin-top: 30px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }

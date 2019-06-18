@@ -1,61 +1,59 @@
 'use strict';
-//Global Variables
+
+var allBusMallImagesArray = [];
+var imagePaths = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+
+var imageNames = ['R2D2 on Vacation', 'Banana Slicer', 'Bathroom Screentime', 'Pedicure Boots', 'One Stop Breakfast', 'Italian Bubblegum', 'Punishment Chair', 'Cthulhu Monster', 'Dog Shaming', 'Dragon for Dinner', 'Pen Utensils', 'Canine Labor', 'Pizza Scissors', 'Sleeping with Sharks', 'Questionable Parenting', 'Sleeping with Intestines', 'Sparkles for Dinner', 'Creepy Tentacle', 'Useless Watering-Can', 'Impossible Wine-Glass']
+
+var allImages= function() {
+  for(var i = 0; i < imagePaths.length ; i++){
+    new BusMallImage(`'../img${imagePaths[i]}.jpg'`, imageNames[i])
+  }
+};
+
+function BusMallImage(src,name){
+  this.name = name;
+  this.src = src;
+  this.likes = 0;
+  this.appeared = 0;
+  allBusMallImagesArray.push(this);
+};
+
+//Left Image Global Variables
 var busMallImageLeft = document.getElementById('left');
+var leftImageText = document.getElementById('left-image-text');
+var currentLeftImageArrayIndex = 16;
+
+//Middle Image Global Variables
 var busMallImageMiddle = document.getElementById('middle');
+var middleImageText = document.getElementById('middle-image-text');
+var currentMiddleImageArrayIndex = 9;
+
+//Right Image Global Variables
 var busMallImageRight = document.getElementById('right');
+var rightImageText = document.getElementById('right-image-text');
+var currentRightImageArrayIndex = 7;
+
 var refreshButton1 = document.getElementById('hide1');
 var refreshButton2 = document.getElementById('hide2');
 var paragraphContainer = document.getElementById('hipster-ipsum');
 var imageContainer = document.getElementById('click-images');
 var navBarContainer = document.getElementById('nav-bar');
-var leftImageText = document.getElementById('left-image-text');
-var middleImageText = document.getElementById('middle-image-text');
-var rightImageText = document.getElementById('right-image-text');
-var currentLeftImageArrayIndex = 16;
-var currentMiddleImageArrayIndex = 9;
-var currentRightImageArrayIndex = 7;
-var allBusMallImagesArray = [];
+
+
 var clickCount = 0; //counting clicks
 var likes = [];
 var names = [];
 var appearances = [];
+
 var ctx = document.getElementById('busmall-chart').getContext('2d');
 
 //Constructor: Bus Mall Images
-var BusMallImage = function(src,name){
-  this.src = src;
-  this.likes = 0;
-  this.appeared = 0;
-  this.name = name;
-  allBusMallImagesArray.push(this);
-};
 
-var allImages= function() {
-  new BusMallImage('./img/bag.jpg', 'R2D2 on Vacation');
-  new BusMallImage('./img/banana.jpg', 'Banana Slicer');
-  new BusMallImage('./img/bathroom.jpg','Bathroom Screentime');
-  new BusMallImage('./img/boots.jpg', 'Pedicure Boots');
-  new BusMallImage('./img/breakfast.jpg', 'One Stop Breakfast');
-  new BusMallImage('./img/bubblegum.jpg', 'Italian Bubblegum');
-  new BusMallImage('./img/chair.jpg', 'Punishment Chair');
-  new BusMallImage('./img/cthulhu.jpg', 'Cthulhu Monster');
-  new BusMallImage('./img/dog-duck.jpg', 'Dog Shaming');
-  new BusMallImage('./img/dragon.jpg', 'Dragon for Dinner');
-  new BusMallImage('./img/pen.jpg', 'Pen Utensils');
-  new BusMallImage('./img/pet-sweep.jpg', 'Canine Labor');
-  new BusMallImage('./img/scissors.jpg', 'Pizza Scissors');
-  new BusMallImage('./img/shark.jpg', 'Sleeping with Sharks');
-  new BusMallImage('./img/sweep.png', 'Questionable Parenting');
-  new BusMallImage('./img/tauntaun.jpg', 'Sleeping with Intestines');
-  new BusMallImage('./img/unicorn.jpg', 'Sparkles for Dinner');
-  new BusMallImage('./img/usb.gif', 'Creepy Tentacle');
-  new BusMallImage('./img/water-can.jpg', 'Useless Watering-Can');
-  new BusMallImage('./img/wine-glass.jpg', 'Impossible Wine-Glass');
-};
 
 if(localStorage.clicks){
   clickCount = localStorage.getItem('clicks');
-  if (clickCount >= 25){
+  if (clickCount >= 5){
     clickCount = 0;
   }
 }
@@ -142,7 +140,7 @@ var imageClickHandler = function(event){
   var saveClicks = JSON.stringify(clickCount);
   localStorage.setItem('clicks', saveClicks);
 
-  if(clickCount === 25){
+  if(clickCount ===5){
     for(var i=0 ; i < allBusMallImagesArray.length ; i++){
       names.push(allBusMallImagesArray[i].name);
       likes.push(allBusMallImagesArray[i].likes);
